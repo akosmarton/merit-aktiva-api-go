@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/akosmarton/merit-aktiva-api-go/aktiva"
+	"github.com/shopspring/decimal"
 )
 
 func main() {
@@ -20,20 +21,20 @@ func main() {
 	ir.Item.Description = "New Description"
 	ir.Item.Type = 3
 	ir.TaxId = "b9b25735-6a15-4d4e-8720-25b254ae3d21"
-	ir.Quantity = 1
-	ir.Price = 1000
+	ir.Quantity = decimal.NewFromFloat(1.0)
+	ir.Price = decimal.NewFromFloat(1000.)
 	i.InvoiceRow = append(i.InvoiceRow, ir)
 	tr := aktiva.TaxAmount{}
 	tr.TaxId = "b9b25735-6a15-4d4e-8720-25b254ae3d21"
-	tr.Amount = 200
+	tr.Amount = decimal.NewFromFloat(200.0)
 	i.TaxAmount = append(i.TaxAmount, tr)
 	i.InvoiceNo = "INV0000001"
-	i.TotalAmount = 1000
+	i.TotalAmount = decimal.NewFromFloat(1000.)
 
 	i.Payment = &aktiva.Payment{}
 	i.Payment.PaymDate = aktiva.TimeToString(time.Now())
 	i.Payment.PaymentMethod = "PayPal"
-	i.Payment.PaidAmount = 1200.0
+	i.Payment.PaidAmount = decimal.NewFromFloat(1200.0)
 
 	r, err := a.SendInvoice(i)
 	if err != nil {
