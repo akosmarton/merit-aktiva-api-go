@@ -59,6 +59,7 @@ type Invoice struct {
 	TaxAmount      []TaxAmount
 	RoundingAmount decimal.Decimal `json:",omitempty"`
 	TotalAmount    decimal.Decimal
+	TotalSum       decimal.Decimal
 	Payment        *Payment `json:",omitempty"`
 	Hcomment       string   `json:",omitempty"`
 	Fcomment       string   `json:",omitempty"`
