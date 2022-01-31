@@ -63,6 +63,7 @@ type Invoice struct {
 	Payment        *Payment `json:",omitempty"`
 	Hcomment       string   `json:",omitempty"`
 	Fcomment       string   `json:",omitempty"`
+	PDF            string   `json:",omitempty"`
 }
 
 type SendInvoiceResponse struct {
