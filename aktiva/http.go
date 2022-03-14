@@ -41,7 +41,7 @@ func (a *Aktiva) httpGet(ep string, resp interface{}) error {
 
 	var t string
 
-	if resp != nil {
+	if resp != nil && hresp.ContentLength > 0 {
 		if err = json.NewDecoder(hresp.Body).Decode(&t); err != nil {
 			return err
 		}
