@@ -83,7 +83,7 @@ func (a *Aktiva) httpPost(ep string, req interface{}, resp interface{}) error {
 		return errors.New("HTTP Status: " + hresp.Status + "  Message: " + msg.Message)
 	}
 
-	if resp != nil {
+	if resp != nil && hresp.ContentLength > 0 {
 		if err = json.NewDecoder(hresp.Body).Decode(&t); err != nil {
 			return err
 		}
